@@ -58,6 +58,48 @@ def biggest_cast
   # Find the id and title of the 3 movies with the
   # largest casts (i.e most actors)
 
+  # SELECT movie.id, movies.title FROM movies WHERE cast size is largest
+  # join castings and movies tables by? = they share casting.movie_id and movies.id
+  # where largest cast memeber => count of actor_id
+  # of the 3 movies with largest cast
+
+  Casting
+    .joins(:movie)
+    .select("movies.id, movies.title")
+    .group("movies.id")
+    .order("count(*) DESC")
+    .limit(3)
+
+
+
+  # SELECT  
+  #   movies.id, movies.title, count(*)
+  # FROM
+  #   castings
+  # JOIN movies
+  #   ON castings.movie_id = movies.id
+  # GROUP BY
+  #   movies.id
+  # ORDER BY
+  #   COUNT(*) DESC
+  # LIMIT 3
+
+
+  # SELECT
+
+  # FROM
+  # JOIN ON
+
+  # WHERE
+
+  # GROUP BY
+  # HAVING
+  # ORDER BY
+  # LIMIT
+
+
+
+
 end
 
 def directed_by_one_of(them)
